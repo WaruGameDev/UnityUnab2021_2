@@ -5,12 +5,34 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage = 1;
+    public Vector2 direction;
+    public float speed = 10;
+    public string target;
+
+    private void Start()
+    {
+        Destroy(gameObject, 3);
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Health health = other.GetComponent<Health>();
-        if (health == null)
-            return;
-        health.TakeDamage(damage);
+        if(other.CompareTag(target))
+        {
+            Health health = other.GetComponent<Health>();
+            if (health == null)
+                return;
+            health.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+    }
+    private void Update()
+    {
+        transform.Translate(direction * speed * Time.deltaTime);
+        
+    }
+    public void DirectionBullet(Vector2 dir)
+    {
+        direction = dir;
     }
 }

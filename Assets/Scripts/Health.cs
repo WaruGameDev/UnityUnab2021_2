@@ -15,10 +15,6 @@ public class Health : MonoBehaviour
             Destroy(gameObject);
             print(nameChar + " ha muerto :c");
         }
-    }
-    private void OnMouseDown()
-    {
-        TakeDamage(1);
-    }
+    }    
 
 }
