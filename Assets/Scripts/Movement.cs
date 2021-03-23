@@ -8,15 +8,21 @@ public class Movement : MonoBehaviour
     public Transform transformAMover;
     public Vector2 directionShoot;
     public bool isUsingMouse =true;
-    
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        transformAMover.Translate(transformAMover.right * x * speed * Time.deltaTime);
-        transformAMover.Translate(transformAMover.up * y * speed * Time.deltaTime);
-
+        //transformAMover.Translate(transformAMover.right * x * speed * Time.deltaTime);
+        //transformAMover.Translate(transformAMover.up * y * speed * Time.deltaTime);
+        rb.velocity = new Vector2(x, y)*speed * Time.fixedDeltaTime;
         //float directionX = (Input.GetAxisRaw("Horizontal"));
         //float directionY = (Input.GetAxisRaw("Vertical"));
         //if(directionX != 0 || directionY != 0)
@@ -31,6 +37,7 @@ public class Movement : MonoBehaviour
             {
                 directionShoot = (new Vector2(mousePosX, mousePosY) - (Vector2)transform.position).normalized;
             }
+            
         }
         else
         {

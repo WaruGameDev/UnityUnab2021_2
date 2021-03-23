@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public string nameChar = "";
+   
     public int hp = 5;
+    public bool enemy;
+    
 
     public void TakeDamage(int damage)
     {
@@ -13,7 +15,13 @@ public class Health : MonoBehaviour
         if(hp <= 0)
         {
             Destroy(gameObject);
-            print(nameChar + " ha muerto :c");
+            
+            if(enemy)
+            {
+                GameManager.staticGameManager.puntaje++;
+                DoorManager.staticDoorManager.enemigosEliminados++;
+            }
+           
         }
     }    
 
