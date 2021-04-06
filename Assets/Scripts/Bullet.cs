@@ -25,6 +25,10 @@ public class Bullet : MonoBehaviour
             health.TakeDamage(damage);
             Destroy(gameObject);
         }
+        if(other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
 
     }
     private void Update()

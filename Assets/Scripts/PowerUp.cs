@@ -6,11 +6,16 @@ public class PowerUp : MonoBehaviour
 {
     public GameObject bubble;
     public GameObject bomb;
+    public GameObject slowDownBullet;
+    public GameObject mobilShield;
 
     public enum POWERUP_TYPE
     {
         BOMB,
-        BUBBLE
+        BUBBLE,
+        SLOWDONW_BULLET,
+        MEDKIT,
+        SHIELD
     }
     public POWERUP_TYPE powerUp = POWERUP_TYPE.BUBBLE;
 
@@ -28,7 +33,20 @@ public class PowerUp : MonoBehaviour
             {
                 Instantiate(bomb, other.transform.position, Quaternion.identity);
             }
+            if(powerUp == POWERUP_TYPE.SLOWDONW_BULLET)
+            {
+                other.GetComponent<Shoot>().bullet = slowDownBullet;
+            }
+            if(powerUp == POWERUP_TYPE.MEDKIT)
+            {
+                other.GetComponent<Health>().TakeDamage(-10);
+            }
+            if(powerUp == POWERUP_TYPE.SHIELD)
+            {
+                Instantiate(mobilShield, other.transform);
+            }
             Destroy(gameObject);
+
         }
         
     }

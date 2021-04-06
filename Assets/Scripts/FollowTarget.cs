@@ -9,6 +9,7 @@ public class FollowTarget : MonoBehaviour
     public float speed = 2;
     public Vector2 directionFollow;
     private Rigidbody2D rb;
+    public bool slowDown;
 
     private void Awake()
     {

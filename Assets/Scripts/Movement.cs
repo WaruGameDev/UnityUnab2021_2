@@ -20,15 +20,9 @@ public class Movement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        //transformAMover.Translate(transformAMover.right * x * speed * Time.deltaTime);
-        //transformAMover.Translate(transformAMover.up * y * speed * Time.deltaTime);
+        
         rb.velocity = new Vector2(x, y)*speed * Time.fixedDeltaTime;
-        //float directionX = (Input.GetAxisRaw("Horizontal"));
-        //float directionY = (Input.GetAxisRaw("Vertical"));
-        //if(directionX != 0 || directionY != 0)
-        //{
-        //    directionShoot = (new Vector2(directionX, directionY)).normalized;
-        //}
+        
         if(isUsingMouse)
         {
             float mousePosX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
