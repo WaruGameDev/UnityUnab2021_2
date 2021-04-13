@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RequestItem : MonoBehaviour
 {
-    public string itemRequested;
+    //public string itemRequested;
+    public Item.TIPOS_MATERIAL materialAPedir;
     public bool ready;
     public List<string> dialogosPj;
 
@@ -26,7 +27,7 @@ public class RequestItem : MonoBehaviour
                 Inventario inventario = collision.GetComponent<Inventario>();
                 foreach (GameObject g in inventario.inventario)
                 {
-                    if (g.GetComponent<Item>().itemName == itemRequested)
+                    if (g.GetComponent<Item>().tiposDeMaterial == materialAPedir)
                     {
                         DialogoManager.instance.ShowDialogue(dialogosPj[1]);
                         inventario.inventario.Remove(g);
