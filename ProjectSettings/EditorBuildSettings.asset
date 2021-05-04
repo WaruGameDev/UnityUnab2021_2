@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Raycast.unity
     guid: 870b357a97a89ac4fbe7eef497291303
+  - enabled: 1
+    path: Assets/Scenes/Vcitoria.unity
+    guid: 7568d2c8e0f69e84a80a606389ed5782
   m_configObjects: {}
